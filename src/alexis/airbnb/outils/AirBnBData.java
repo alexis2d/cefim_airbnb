@@ -1,5 +1,6 @@
 package alexis.airbnb.outils;
 
+import alexis.airbnb.logements.Appartement;
 import alexis.airbnb.logements.Logement;
 import alexis.airbnb.logements.Maison;
 import alexis.airbnb.utilisateurs.Hote;
@@ -12,21 +13,26 @@ public class AirBnBData {
     private static AirBnBData instance = new AirBnBData();
     //Attributs de l'instance du singleton
     private ArrayList<Hote> hoteArrayList;
-    private Voyageur voyageur;
-    private Logement logement;
+    private ArrayList<Logement> logementArrayList;
 
 
     //Constructeur
     private  AirBnBData(){
         //jeu de test
-        ArrayList<Hote> hoteArrayList1 = new ArrayList<>();
-        Hote hote1 = new Hote("Mohamed", "KC", 17, 5);
-        Voyageur voyageur1 = new Voyageur("Adolphe", "Petain", 25);
-        Logement maison1 = new Maison("maison1", hote1, 250, "10 rue de Darius 37100 LaFaille", 500, 10, 100, false);
+        Hote hote1 = new Hote("Robert", "Siu", 20, 5);
+        Hote hote2 = new Hote("Jean", "Gui", 27, 7);
+        ArrayList<Hote> hoteArrayList = new ArrayList<>();
+        hoteArrayList.add(hote1);
+        hoteArrayList.add(hote2);
 
-        this.hoteArrayList = hoteArrayList1;
-        this.voyageur = voyageur1;
-        this.logement = maison1;
+        Logement maison1 = new Maison("maison1", hote1, 250, "10 rue de Darius 37100 LaFaille", 500, 10, 100, true);
+        Logement appartement1 = new Appartement("appartement1", hote2, 250, "2 rue de Neeko 37000 LaJungle", 100, 4, 2, 12);
+        ArrayList<Logement> logementArrayList = new ArrayList<>();
+        logementArrayList.add(maison1);
+        logementArrayList.add(appartement1);
+
+        this.hoteArrayList = hoteArrayList;
+        this.logementArrayList = logementArrayList;
 
 
     }
@@ -36,15 +42,11 @@ public class AirBnBData {
         return instance;
     }
 
-    public Logement getLogement() {
-        return logement;
+    public ArrayList<Logement> getLogements() {
+        return logementArrayList;
     }
 
-    public ArrayList<Hote> getHoteArrayList() {
+    public ArrayList<Hote> getHotes() {
         return hoteArrayList;
-    }
-
-    public Voyageur getVoyageur() {
-        return voyageur;
     }
 }

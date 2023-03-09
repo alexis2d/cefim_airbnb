@@ -6,6 +6,7 @@ import alexis.airbnb.logements.Logement;
 import alexis.airbnb.logements.Maison;
 import alexis.airbnb.outils.AirBnBData;
 import alexis.airbnb.outils.MaDate;
+import alexis.airbnb.outils.Recherche;
 import alexis.airbnb.reservations.*;
 import alexis.airbnb.utilisateurs.Hote;
 import alexis.airbnb.utilisateurs.Personne;
@@ -25,14 +26,20 @@ public class Main {
 
         scanner = new Scanner(System.in);
 
-        Personne alexis = new Personne("Alexis", "Duquenet", 28);
+        AirBnBData airBnBData = AirBnBData.getInstance();
+        Recherche rechercheBuilder = new Recherche.RechercheBuilder(4).possedePiscine(true).build();
+        for (Logement logement : rechercheBuilder.result()) {
+            logement.afficher();
+        }
+
+        /*Personne alexis = new Personne("Alexis", "Duquenet", 28);
         Hote alexisHote = new Hote(alexis, 10);
         Voyageur alexisVoyageur = new Voyageur(alexis);
         Hote peterHote = new Hote("Peter", "Bardu", 29, 12);
 
         Maison maison = new Maison("Maison Peter", peterHote, 40, "81 Rue Colbert, 37000 Tours", 140, 15, 200, false);
         Appartement appartement = new Appartement("Appart Alexis" ,alexisHote, 20, "40 rue du Gui, 37100 Tours", 60, 5, 1, 10);
-
+*/
         /*Sejour voyageStValentin = new SejourStValentin(maison);
         Sejour voyageMaison = new SejourCourt(new MaDate("09/02/2023"), 4, maison, 10);
         Sejour voyageAppart = new SejourLong(new MaDate(12, 02, 2023),7, appartement,5);
@@ -59,9 +66,9 @@ public class Main {
             System.out.println(e.getMessage());
         }*/
 
-        Date dateArrivee = new MaDate("09/04/2023");
+        /*Date dateArrivee = new MaDate("09/04/2023");
         int nbNuits = 2;
-        int nbVoyageurs = 3;
+        int nbVoyageurs = 3;*/
 
         // pb n°1
         /*Sejour sejour = new SejourLong(dateArrivee, nbNuits, maison, nbVoyageurs);
@@ -79,8 +86,7 @@ public class Main {
         sejour.setLogement(appartement);
         sejour.afficher();*/
 
-        AirBnBData airBnBData = AirBnBData.getInstance();
-        airBnBData.getLogement().afficher();
+
 
     }
 

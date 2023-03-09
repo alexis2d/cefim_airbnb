@@ -34,4 +34,7 @@ public class Maison extends Logement {
         }
     }
 
+    public boolean hasPiscine() {
+        return possedePiscine;
+    }
 }

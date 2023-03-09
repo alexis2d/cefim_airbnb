@@ -1,0 +1,5 @@
+Numéro du voyageur : 3
+Numéro du logement : 1
+Date d'arrivée (DD/MM/YYYY) : 12/02/2023
+Nombre de nuits : 4
+Nombre de personnes : 10

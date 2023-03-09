@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<Logements>
+	<Appartement name="Appartement 1">
+		<hote>
+			<nom>Lapêche</nom>
+			<prenom>Ella</prenom>
+			<age>31</age>
+			<delaiReponse>12</delaiReponse>
+		</hote>
+		<tarifParNuit>150</tarifParNuit>
+		<adresse>81 rue Colbert, Tours</adresse>
+		<superficie>58</superficie>
+		<nbVoyageursMax>4</nbVoyageursMax>
+		<numeroEtage>2</numeroEtage>
+		<superficieBalcon>10</superficieBalcon>
+	</Appartement>
+	
+	<Appartement name="Appartement 2">
+		<hote>
+			<nom>Menfaim</nom>
+			<prenom>Gérard</prenom>
+			<age>52</age>
+			<delaiReponse>1</delaiReponse>
+		</hote>
+		<tarifParNuit>70</tarifParNuit>
+		<adresse>83 rue Colbert, Tours</adresse>
+		<superficie>120</superficie>
+		<nbVoyageursMax>4</nbVoyageursMax>
+		<numeroEtage>1</numeroEtage>
+		<superficieBalcon>0</superficieBalcon>
+	</Appartement>
+	
+	<Appartement name="Appartement 3">
+		<hote>
+			<nom>Ouzi</nom>
+			<prenom>Jacques</prenom>
+			<age>31</age>
+			<delaiReponse>12</delaiReponse>
+		</hote>
+		<tarifParNuit>80</tarifParNuit>
+		<adresse>85 rue Colbert, Tours</adresse>
+		<superficie>80</superficie>
+		<nbVoyageursMax>2</nbVoyageursMax>
+		<numeroEtage>3</numeroEtage>
+		<superficieBalcon>0</superficieBalcon>
+	</Appartement>
+	
+	<Maison name="Maison 1">
+		<hote>
+			<nom>Diossi</nom>
+			<prenom>Kelly</prenom>
+			<age>31</age>
+			<delaiReponse>72</delaiReponse>
+		</hote>
+		<tarifParNuit>220</tarifParNuit>
+		<adresse>42 Rue Lakanal, Tours</adresse>
+		<superficie>100</superficie>
+		<nbVoyageursMax>3</nbVoyageursMax>
+		<superficieJardin>0</superficieJardin>
+		<possedePiscine>0</possedePiscine>
+	</Maison>
+	
+	<Maison name="Maison 2">
+		<hote>
+			<nom>Ochon</nom>
+			<prenom>Paul</prenom>
+			<age>25</age>
+			<delaiReponse>24</delaiReponse>
+		</hote>
+		<tarifParNuit>80</tarifParNuit>
+		<adresse>44 Rue Lakanal, Tours</adresse>
+		<superficie>180</superficie>
+		<nbVoyageursMax>6</nbVoyageursMax>
+		<superficieJardin>450</superficieJardin>
+		<possedePiscine>1</possedePiscine>
+	</Maison>
+
+	<Maison name="Maison 3">
+		<hote>
+			<nom>Golade</nom>
+			<prenom>Larry</prenom>
+			<age>45</age>
+			<delaiReponse>1</delaiReponse>
+		</hote>
+		<tarifParNuit>125</tarifParNuit>
+		<adresse>46 Rue Lakanal, Tours</adresse>
+		<superficie>120</superficie>
+		<nbVoyageursMax>6</nbVoyageursMax>
+		<superficieJardin>2000</superficieJardin>
+		<possedePiscine>1</possedePiscine>
+	</Maison>
+
+	<Maison name="Maison 4">
+		<hote>
+			<nom>Heat</nom>
+			<prenom>Hubert</prenom>
+			<age>55</age>
+			<delaiReponse>12</delaiReponse>
+		</hote>
+		<tarifParNuit>80</tarifParNuit>
+		<adresse>44 Rue Lakanal, Tours</adresse>
+		<superficie>180</superficie>
+		<nbVoyageursMax>6</nbVoyageursMax>
+		<superficieJardin>800</superficieJardin>
+		<possedePiscine>0</possedePiscine>
+	</Maison>
+
+	<Maison name="Maison 5">
+		<hote>
+			<nom>Diossi</nom>
+			<prenom>Kelly</prenom>
+			<age>31</age>
+			<delaiReponse>72</delaiReponse>
+		</hote>
+		<tarifParNuit>120</tarifParNuit>
+		<adresse>32 Rue du Commerce, Tours</adresse>
+		<superficie>92</superficie>
+		<nbVoyageursMax>5</nbVoyageursMax>
+		<superficieJardin>100</superficieJardin>
+		<possedePiscine>0</possedePiscine>
+	</Maison>
+
+	<Maison name="Maison 6">
+		<hote>
+			<nom>Menfaim</nom>
+			<prenom>Gérard</prenom>
+			<age>52</age>
+			<delaiReponse>1</delaiReponse>
+		</hote>
+		<tarifParNuit>85</tarifParNuit>
+		<adresse>79 Rue Auguste Chevalier, Tours</adresse>
+		<superficie>180</superficie>
+		<nbVoyageursMax>6</nbVoyageursMax>
+		<superficieJardin>400</superficieJardin>
+		<possedePiscine>1</possedePiscine>
+	</Maison>
+
+	<Maison name="Maison 7">
+		<hote>
+			<nom>Golade</nom>
+			<prenom>Larry</prenom>
+			<age>45</age>
+			<delaiReponse>1</delaiReponse>
+		</hote>
+		<tarifParNuit>65</tarifParNuit>
+		<adresse>81 Rue Auguste Chevalier, Tours</adresse>
+		<superficie>120</superficie>
+		<nbVoyageursMax>4</nbVoyageursMax>
+		<superficieJardin>0</superficieJardin>
+		<possedePiscine>0</possedePiscine>
+	</Maison>
+</Logements>

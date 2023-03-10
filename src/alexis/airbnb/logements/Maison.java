@@ -37,4 +37,13 @@ public class Maison extends Logement {
     public boolean hasPiscine() {
         return possedePiscine;
     }
+
+    public boolean hasJardin() {
+        if (superficieJardin > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

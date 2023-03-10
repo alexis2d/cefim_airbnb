@@ -6,6 +6,10 @@ import alexis.airbnb.logements.Maison;
 import alexis.airbnb.outils.AirBnBData;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Recherche {
 
@@ -17,6 +21,7 @@ public class Recherche {
     private int tarifMin;
     private int tarifMax;
     private int possedePiscine;
+    private int possedeJardin;
     private int possedeBalcon;
 
     private Recherche(RechercheBuilder builder) {
@@ -27,9 +32,9 @@ public class Recherche {
         this.possedeBalcon = builder.possedeBalconBuilder;
     }
 
-    public ArrayList<Logement> result() {
+    public List<Logement> result() {
 
-        ArrayList<Logement> result = new ArrayList<>();
+        /*ArrayList<Logement> result = new ArrayList<>();
 
         for (Logement logement : AirBnBData.getInstance().getLogements()) {
 
@@ -86,7 +91,56 @@ public class Recherche {
             result.add(logement);
         }
 
-        return result;
+        return result;*/
+
+        ArrayList<Logement> logementArrayList = AirBnBData.getInstance().getLogements();
+        Stream<Logement> stream = logementArrayList.stream().filter(predicateNbVoyageurs().and(predicateTarif()).and(predicateJardin()));
+        return stream.collect(Collectors.toList());
+
+    }
+
+    public Predicate<Logement> predicateNbVoyageurs() {
+        return logement -> nbVoyageurs <= logement.getNbVoyageursMax();
+    }
+
+    public Predicate<Logement> predicateTarif() {
+        return logement -> logement.getTarifParNuit() >= tarifMin && logement.getTarifParNuit() <= tarifMax;
+    }
+
+    public Predicate<Logement> predicatePiscine() {
+        return logement -> {
+            if (possedePiscine == YES) {
+                if (logement instanceof Maison maison) {
+                    return maison.hasPiscine();
+                } else {
+                    return false;
+                }
+            } else if (possedePiscine == NO) {
+                if (logement instanceof Maison maison) {
+                    return maison.hasPiscine();
+                } else {
+                    return true;
+                }
+            } else return possedeJardin == WE_DONT_CARE;
+        };
+    }
+
+    public Predicate<Logement> predicateJardin() {
+        return logement -> {
+            if (possedeJardin == YES) {
+                if (logement instanceof Maison maison) {
+                    return maison.hasJardin();
+                } else {
+                    return false;
+                }
+            } else if (possedeJardin == NO) {
+                if (logement instanceof Maison maison) {
+                    return maison.hasJardin();
+                } else {
+                    return true;
+                }
+            } else return possedeJardin == WE_DONT_CARE;
+        };
     }
 
     public static class RechercheBuilder {
@@ -95,6 +149,7 @@ public class Recherche {
         private int tarifMinBuilder;
         private int tarifMaxBuilder;
         private int possedePiscineBuilder;
+        private int possedeJardinBuilder;
         private int possedeBalconBuilder;
 
         public RechercheBuilder(int nbVoyageurs) {
@@ -102,6 +157,7 @@ public class Recherche {
             tarifMinBuilder = 0;
             tarifMaxBuilder = Integer.MAX_VALUE;
             possedePiscineBuilder = WE_DONT_CARE;
+            possedeJardinBuilder = WE_DONT_CARE;
             possedeBalconBuilder = WE_DONT_CARE;
         }
 
@@ -117,6 +173,11 @@ public class Recherche {
 
         public RechercheBuilder possedePiscine(boolean possedePiscine) {
             this.possedePiscineBuilder = possedePiscine ? YES : NO;
+            return this;
+        }
+
+        public RechercheBuilder possedeJardin(boolean possedeJardin) {
+            this.possedeJardinBuilder = possedeJardin ? YES : NO;
             return this;
         }
 

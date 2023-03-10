@@ -15,7 +15,9 @@ import alexis.airbnb.utilisateurs.Voyageur;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -26,11 +28,14 @@ public class Main {
 
         scanner = new Scanner(System.in);
 
-        AirBnBData airBnBData = AirBnBData.getInstance();
-        Recherche rechercheBuilder = new Recherche.RechercheBuilder(4).possedePiscine(true).build();
+        //AirBnBData airBnBData = AirBnBData.getInstance();
+        /*Recherche rechercheBuilder = new Recherche.RechercheBuilder(4).possedePiscine(true).build();
         for (Logement logement : rechercheBuilder.result()) {
             logement.afficher();
-        }
+        }*/
+        Recherche rechercheBuilder = new Recherche.RechercheBuilder(2).tarifMinParNuit(50).tarifMaxParNuit(400).possedeJardin(true).build();
+        List<Logement> logementArrayList = rechercheBuilder.result();
+        logementArrayList.forEach(logement -> logement.afficher());
 
         /*Personne alexis = new Personne("Alexis", "Duquenet", 28);
         Hote alexisHote = new Hote(alexis, 10);

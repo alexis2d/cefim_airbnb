@@ -3,12 +3,11 @@ package alexis.airbnb.outils;
 import alexis.airbnb.logements.Appartement;
 import alexis.airbnb.logements.Logement;
 import alexis.airbnb.logements.Maison;
-import alexis.airbnb.outils.AirBnBData;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
 public class Recherche {
@@ -29,6 +28,7 @@ public class Recherche {
         this.tarifMin = builder.tarifMinBuilder;
         this.tarifMax = builder.tarifMaxBuilder;
         this.possedePiscine = builder.possedePiscineBuilder;
+        this.possedeJardin = builder.possedeJardinBuilder;
         this.possedeBalcon = builder.possedeBalconBuilder;
     }
 
@@ -94,8 +94,31 @@ public class Recherche {
         return result;*/
 
         ArrayList<Logement> logementArrayList = AirBnBData.getInstance().getLogements();
-        Stream<Logement> stream = logementArrayList.stream().filter(predicateNbVoyageurs().and(predicateTarif()).and(predicateJardin()));
+        Stream<Logement> stream = logementArrayList
+                .stream()
+                .filter(predicateNbVoyageurs().and(predicateTarif()).and(predicatePiscine()).and(predicateJardin()).and(predicateBalcon()))
+                .sorted(Comparator.comparingDouble(Logement::getTarifParNuit));
         return stream.collect(Collectors.toList());
+
+    }
+
+    public OptionalDouble resultAverage() {
+
+        ArrayList<Logement> logementArrayList = AirBnBData.getInstance().getLogements();
+        DoubleStream stream = logementArrayList
+                .stream()
+                .mapToDouble(Logement::getTarifParNuit);
+        return stream.average();
+
+    }
+
+    public Optional<Logement> resultMoinsCher() {
+
+        ArrayList<Logement> logementArrayList = AirBnBData.getInstance().getLogements();
+        Stream<Logement> stream = logementArrayList
+                .stream()
+                .sorted(Comparator.comparingDouble(Logement::getTarifParNuit));
+        return stream.findFirst();
 
     }
 
@@ -104,7 +127,7 @@ public class Recherche {
     }
 
     public Predicate<Logement> predicateTarif() {
-        return logement -> logement.getTarifParNuit() >= tarifMin && logement.getTarifParNuit() <= tarifMax;
+        return logement -> (logement.getTarifParNuit() >= tarifMin) && (logement.getTarifParNuit() <= tarifMax);
     }
 
     public Predicate<Logement> predicatePiscine() {
@@ -117,11 +140,11 @@ public class Recherche {
                 }
             } else if (possedePiscine == NO) {
                 if (logement instanceof Maison maison) {
-                    return maison.hasPiscine();
+                    return !(maison.hasPiscine());
                 } else {
                     return true;
                 }
-            } else return possedeJardin == WE_DONT_CARE;
+            } else return possedePiscine == WE_DONT_CARE;
         };
     }
 
@@ -135,11 +158,29 @@ public class Recherche {
                 }
             } else if (possedeJardin == NO) {
                 if (logement instanceof Maison maison) {
-                    return maison.hasJardin();
+                    return !(maison.hasJardin());
                 } else {
                     return true;
                 }
             } else return possedeJardin == WE_DONT_CARE;
+        };
+    }
+
+    public Predicate<Logement> predicateBalcon() {
+        return logement -> {
+            if (possedeBalcon == YES) {
+                if (logement instanceof Appartement appartement) {
+                    return appartement.hasBalcon();
+                } else {
+                    return false;
+                }
+            } else if (possedeBalcon == NO) {
+                if (logement instanceof Appartement appartement) {
+                    return !(appartement.hasBalcon());
+                } else {
+                    return true;
+                }
+            } else return possedeBalcon == WE_DONT_CARE;
         };
     }
 

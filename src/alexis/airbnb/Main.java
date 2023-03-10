@@ -15,10 +15,7 @@ import alexis.airbnb.utilisateurs.Voyageur;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -33,9 +30,13 @@ public class Main {
         for (Logement logement : rechercheBuilder.result()) {
             logement.afficher();
         }*/
-        Recherche rechercheBuilder = new Recherche.RechercheBuilder(2).tarifMinParNuit(50).tarifMaxParNuit(400).possedeJardin(true).build();
+
+        Recherche rechercheBuilder = new Recherche.RechercheBuilder(2).tarifMinParNuit(50).tarifMaxParNuit(400).build();
         List<Logement> logementArrayList = rechercheBuilder.result();
         logementArrayList.forEach(logement -> logement.afficher());
+        System.out.println(rechercheBuilder.resultAverage());
+        System.out.println("Le moins cher :");
+        rechercheBuilder.resultMoinsCher().get().afficher();
 
         /*Personne alexis = new Personne("Alexis", "Duquenet", 28);
         Hote alexisHote = new Hote(alexis, 10);

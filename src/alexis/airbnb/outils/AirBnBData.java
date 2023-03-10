@@ -25,8 +25,8 @@ public class AirBnBData {
         hoteArrayList.add(hote1);
         hoteArrayList.add(hote2);
 
-        Logement maison1 = new Maison("maison1", hote1, 60, "10 rue de Darius 37100 LaFaille", 500, 6, 100, true);
-        Logement appartement1 = new Appartement("appartement1", hote2, 350, "2 rue de Neeko 37000 LaJungle", 100, 7, 2, 12);
+        Logement maison1 = new Maison("maison1", hote1, 120, "10 rue de Darius 37100 LaFaille", 500, 6, 100, true);
+        Logement appartement1 = new Appartement("appartement1", hote2, 200, "2 rue de Neeko 37000 LaJungle", 100, 7, 2, 12);
         ArrayList<Logement> logementArrayList = new ArrayList<>();
         logementArrayList.add(maison1);
         logementArrayList.add(appartement1);

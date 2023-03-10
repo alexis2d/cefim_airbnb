@@ -39,11 +39,7 @@ public class Maison extends Logement {
     }
 
     public boolean hasJardin() {
-        if (superficieJardin > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return superficieJardin > 0;
     }
 
 }
